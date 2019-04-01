@@ -1,0 +1,110 @@
+/* Reset CSS */
+
+html,body,h1,h2,h3,h4,h5,h6,p,ol,ul,li,pre,code,address,form,
+fieldset,blockquote,header,footer,section,aside,nav,div,a{
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  font-weight: normal;
+}
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th, caption{
+  font-weight: normal;
+  text-align: left;
+}
+
+ol{
+  margin-left: 1.4em;
+  list-style: decimal;
+}
+
+ul{
+  margin-left: 1.4em;
+  list-style: square;
+}
+
+img, fieldset{
+  border: 0;
+}
+
+q:before, q:after{
+  content: '';
+}
+
+/* ================================================================================================================= */
+
+#picture{
+  background-color: violet;
+}
+
+#gradient{
+  background-color: aquamarine; 
+}
+
+#radial{
+  background-color: salmon;
+}
+
+#sketch{
+  border: 2px solid darkgreen;
+}
+
+#paint{
+  width: 500px;
+  float: left;
+}
+
+#paint2{
+  width: 500px;
+  float: left;
+}
+
+#paint3{
+  width: 500px;
+  float: left;
+}
+
+#paint4{
+  float: left;
+}
+
+
+canvas{
+   
+   border: 0.2vw solid firebrick;
+   float: left;
+ }
+
+
+ #boxImage{
+  float: left;
+  margin: 3vw;
+  border: 0.1vw solid #000;
+}
+
+#destination{
+  font-size: 4vh;
+  float: left;
+  width: 60vw;
+  height: 60vh;
+  margin: 10 vw;
+  border: 0.1vw solid #ff5510;
+
+}
+
+#zoneDestination{
+  font-size: 4vh;
+  float: left;
+  width: 40vw;
+  height: 40vh;
+  border: 0.1vw solid #ff2200;
+}
+
+#boxImages{
+  float: left;
+}
