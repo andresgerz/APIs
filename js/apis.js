@@ -408,7 +408,7 @@
 
 // window.addEventListener("load", start, false);
 
-function beginImages(){
+/* function beginImages(){
 
   var images = document.querySelectorAll("#boxImages img");
 
@@ -497,3 +497,392 @@ function finished(e){
 window.addEventListener("load", beginImages, false);
 
 
+function beginLocation(){
+
+  var myButton = document.getElementById("giveMeLocation");
+  myButton = addEventListener("click", beMadeFrom, false);
+
+}
+
+function beMadeFrom() { 
+  var parameters = {enableHighAccuracy: true, timeout:10000, maximumAge: 60000};
+
+  navigator.geolocation.watchPosition(showPosition, errors, parameters);
+}
+
+function showPosition(position){ 
+
+  var location = document.getElementById("location");
+  // var myLocation = "";
+
+  // myLocation += "Latitude: " + position.coords.latitude + "<br>";
+  // myLocation += "Longitude: " + position.coords.longitude + "<br>";
+  // myLocation += "Accuracy: " + position.coords.accuracy + "<br>";
+
+  var myMap = "https://maps.googleapis.com/maps/api/staticmap?center=" + position.coords.latitude + ","+ position.coords.longitude + "," + "&zoom=12&size=400x400&sensor=false&markers=" + position.coords.latitude + "," + position.coords.longitude;
+
+  location.innerHTML = "<img src'" + myMap + "'>";
+}
+
+function errors(error){
+  // alert("There's an error" + error.code + " " + error.message);
+
+  if(error.code==1){
+    alert("You shall to use the geolocation");
+  }
+}
+
+window.addEventListener("load", beginLocation, false); */
+
+//############################################################################################
+// API Web Storage: sessionStorage and localStorage
+
+
+// function startStorage() {
+
+//   var button = document.getElementById("save");
+//   button.addEventListener("click", itemNew, false);
+
+// };
+
+// function itemNew() {
+
+//   var password = document.getElementById("password").value;
+//   var value = document.getElementById("value").value;
+
+//   localStorage.setItem(password, value);
+//   //localStorage[password] = value;
+
+//   read_write(password);
+
+//   document.getElementById("password").value = "";
+//   document.getElementById("value").value = "";
+// }
+
+// function read_write(password) {
+//   var data_zone = document.getElementById("data-zone");
+
+//   data_zone.innerHTML = '<div><button class="display-4 bg-danger" onclick="toDeleteAll()">Delete All</button></div>';
+//   //var value = localStorage[password];
+
+
+//   for(i=0 ; i<localStorage.length ; i++ ) {
+
+//     var password = localStorage.key(i);
+//     var value2 = localStorage.getItem(password);
+
+//     data_zone.innerHTML += '<div>Password: ' + password + '--' + 'Value: ' + value2 + '<br><button class="btn btn-danger" onclick="toDeleteItem(\'' + password + '\')">Delete</button></div>';
+//   }
+ 
+// }
+
+// function toDeleteAll() {
+
+//   if(confirm("Do you sure?")) {
+//     localStorage.clear();
+//     read_write();
+//   }
+// }
+
+// function toDeleteItem(password) {
+
+//   if(confirm("Do you sure?")) {
+
+//     localStorage.removeItem(password);
+//     read_write();
+//   }
+// }
+
+// window.addEventListener("load", startStorage, false);
+
+//############################################################################################
+// API Indexed DB
+
+// var db;
+
+// function startIndexed() {
+
+//   dataZone = document.getElementById("box-data");
+//   button = document.getElementById("toSave");
+//   button.addEventListener("click", addObject, false);
+
+//   var request = window.indexedDB.open("myBase");
+//   request.onsuccess = function (e) {
+    
+//     db = e.target.result;
+
+//     };
+  
+//   request.onupgradeneeded = function (e) {  
+//     db = e.target.result;
+//     db.createObjectStore("people", { keyPath : 'password'} );
+//   };
+// }
+
+// function addObject() {
+  
+//   var password = document.getElementById("thePassword").value;
+//   var title = document.getElementById("theTitle").value;
+//   var age = document.getElementById("theAge").value;
+//   var transac = db.transaction(["people"], "readwrite").objectStore("people").add({ password: password, title: title, age: age });
+
+//   transac.addEventListener("success", showIt, false);
+
+
+//   document.getElementById("thePassword").value = ""
+//   document.getElementById("theTitle").value = ""
+//   document.getElementById("theAge").value = ""
+// }
+
+// function  showIt() {
+  
+//   dataZone.innerHTML = "";
+
+//   var transac = db.transaction(["people"], "readonly");
+//   var store = transac.objectStore("people");
+//   var cursor = store.openCursor();
+//   cursor.addEventListener("success", showData, false);
+// }
+
+// function showDate(e) {
+  
+//   var cursor =  e.target.result;
+
+//   if(cursor) {
+
+//     dataZone.innerHTML += "<div>" + cursor.value.password + " - " + cursor.value.title + " - " + cursor.value.age + "</div>";
+//     cursor.continue();
+
+//   }
+// }
+
+// window.addEventListener("load", startIndexed, false);
+
+//############################################################################################
+// API IndexedDB example 2
+
+// var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+// var dataBase = null;
+
+// function startDB() {
+    
+//     dataBase = indexedDB.open("object", 1);
+    
+//     dataBase.onupgradeneeded = function (e) {
+    
+//         var active = dataBase.result;                    
+//         var object = active.createObjectStore('people', { keyPath : 'id', autoIncrement : true });
+//         object.createIndex('by_name', 'name', { unique : false });
+//         object.createIndex('by_dni', 'dni', { unique : true});
+        
+//     };
+    
+//     dataBase.onsuccess = function (e) {
+//         alert('Database loaded');
+//         loadAll();
+//     };
+    
+//     dataBase.onerror = function (e) {
+//         alert('Error loading database');
+//     };
+// }
+
+// function add() {
+    
+//     var active = dataBase.result;
+//     var data = active.transaction(["people"], "readwrite");
+//     var object = data.objectStore("people");
+    
+//     var request = object.put({
+//         dni : document.querySelector("#dni").value,
+//         name : document.querySelector("#name").value.toLowerCase(),
+//         surname : document.querySelector("#surname").value
+//     });
+    
+//     request.onerror = function (e) {
+//         alert(request.error.name + '\n\n' + request.error.message);
+//     };
+
+//     data.oncomplete = function (e) {
+//         document.querySelector('#dni').value = '';
+//         document.querySelector('#name').value = '';
+//         document.querySelector('#surname').value = '';
+//         alert('Object successfully added');
+//         loadAll();
+//     };
+// }
+
+// function load(id) {
+    
+//     var active = dataBase.result;
+//     var data = active.transaction(["people"], "readonly");
+//     var object = data.objectStore("people");
+    
+//     var request = object.get(parseInt(id));
+    
+//     request.onsuccess = function () {
+        
+//         var result = request.result;
+        
+//         if (result !== undefined) {
+//             alert("ID: " + result.id + "\n\
+//             DNI: " + result.dni + "\n\
+//             Name: " + result.name + "\n\
+//             Surname: " + result.surname);
+//         }
+//     };
+    
+// }
+
+// function loadByDni(dni) {
+    
+//     var active = dataBase.result;
+//     var data = active.transaction(["people"], "readonly");
+//     var object = data.objectStore("people");
+//     var index = object.index("by_dni");
+    
+//     var request = index.get(String(dni));
+    
+//     request.onsuccess = function () {
+        
+//         var result = request.result;
+        
+//         if (result !== undefined) {
+//             alert("ID: " + result.id + "\n\
+//             DNI: " + result.dni + "\n\
+//             Name: " + result.name + "\n\
+//             Surname: " + result.surname);
+//         }
+//     };
+    
+// }
+
+// function loadAll() {
+    
+//     var active = dataBase.result;
+//     var data = active.transaction(["people"], "readonly");
+//     var object = data.objectStore("people");
+    
+//     var elements = [];
+    
+//     object.openCursor().onsuccess = function (e) {
+        
+//         var result = e.target.result;
+        
+//         if (result === null) {
+//             return;
+//         }
+        
+//         elements.push(result.value);
+//         result.continue();
+        
+//     };
+    
+//     data.oncomplete = function() {
+        
+//         var outerHTML = '';
+        
+//         for (var key in elements) {
+            
+//             outerHTML += '\n\
+//             <tr>\n\
+//                 <td>' + elements[key].dni + '</td>\n\
+//                 <td>' + elements[key].name + '</td>\n\
+//                 <td>\n\
+//                     <button type="button" onclick="load(' + elements[key].id + ');">Details</button>\n\
+//                     <button type="button" onclick="loadByDni(' + elements[key].dni + ');">Details DNI</button>\n\
+//                 </td>\n\
+//             </tr>';                        
+//         }
+        
+//         elements = [];
+//         document.querySelector("#elementsList").innerHTML = outerHTML;
+//     };
+    
+// }
+
+// function loadAllByName() {
+    
+//     var active = dataBase.result;
+//     var data = active.transaction(["people"], "readonly");
+//     var object = data.objectStore("people");
+//     var index = object.index('by_name');
+    
+//     var elements = [];
+    
+//     index.openCursor().onsuccess = function (e) {
+        
+//         var result = e.target.result;
+        
+//         if (result === null) {
+//             return;
+//         }
+        
+//         elements.push(result.value);
+//         result.continue();
+        
+//     };
+    
+//     data.oncomplete = function() {
+        
+//         var outerHTML = '';
+        
+//         for (var key in elements) {
+            
+//             outerHTML += '\n\
+//             <tr>\n\
+//                 <td>' + elements[key].dni + '</td>\n\
+//                 <td>' + elements[key].name + '</td>\n\
+//                 <td>\n\
+//                     <button type="button" onclick="load(' + elements[key].id + ');">Details</button>\n\
+//                     <button type="button" onclick="loadByDni(' + elements[key].dni + ');">Details DNI</button>\n\
+//                 </td>\n\
+//             </tr>';                        
+//         }
+        
+//         elements = [];
+//         document.querySelector("#elementsList").innerHTML = outerHTML;
+//     };
+    
+// }
+
+// window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+// window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+
+//################################################################################################################################### 
+
+function startFile() {
+    
+    var zoneData = document.getElementById("zoneData");
+    var files = document.getElementById("files");
+    files.addEventListener("change", process, false);
+}
+
+function process(e) {
+    
+    var filesProcess = e.target.files;
+
+    zoneData.innerHTML = "";
+
+    var myFiles = filesProcess[0];
+
+    if(!myFiles.type.match(/image/)) {
+
+      alert("Select a image please");
+    } else {
+      zoneData.innerHTML += "File's name: " + myFiles.name + "<br>";
+      zoneData.innerHTML += "File's size: " + Math.round(myFiles.size/1024) + " kb <br>";
+
+      var reader = new FileReader();
+      reader.readAsDataURL(myFiles);
+      reader.addEventListener("load", showInWeb, false);
+    }
+}
+
+function showInWeb(e) {
+    
+    var res = e.target.result;
+    zoneData.innerHTML += "<img src='" + res + "' width='85%'>";
+}
+
+window.addEventListener("load", startFile, false);

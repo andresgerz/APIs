@@ -3,13 +3,20 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>API Canvas</title>
+    <title>APIs</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
 
-    <link rel="stylesheet" href="css/api_canvas.css" type="text/css">
-
-  </head>
-  <body>
+    <link rel="stylesheet" href="css/apis.css" type="text/css">
+     
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
+ 
+  </head>
+  
+    
+  
+  <body onload="startDB();"> 
+  <!--   
     <section id="paint">
       <canvas id="picture" width="600" height="400">
       </canvas>
@@ -116,11 +123,11 @@
     <div>
       <svg width="1000" height="250">
           <rect width="550" height="250" fill="#5599bb" stroke="#000">
-            <!-- <animate attibuteName="x"
+             <animate attibuteName="x"
             from="0" to="300"
             dur="3s" fill="freeze"
             repeatCount="1"/>
-                       -->
+                       
           </rect>
         </svg>
     </div>
@@ -150,7 +157,107 @@
       </section>
     </div>
 
-    <script type="text/javascript" src="js/api_canvas.js"></script>
+    <br>
+    <hr>
+    <br>
+
+    <div id="location">
+      <button id="giveMeLocation">Gime me the location</button>
+    </div>
+ -->
+
+
+<!-- ################################################################################################################################### -->
+
+<!--  API Web Storage-->
+ 
+     <!-- <div id="container" class="bg-primary w-50 m-5 p-5">
+      <section id="form-zone">
+        <form name="myForm">
+
+          <p> Password: <br><input type="text"  id="password"></p>
+          <p> Value: <br><textarea id="value"></textarea></p>
+          <p> <input type="button" id="save" value="Save"></p>
+
+        </form>
+
+        <section id="data-zone" class="bg-white border border-dark m-5 p-2">
+          waiting the reading
+        </section>
+
+        
+      </section>
+    </div>  -->
+<!--  
+    <div id="box-container" class="bg-info w-100 p-5" style="height: 1000px">
+      <section id="box-form" class="w-25 border border-dark float-left p-5">
+        <form name="theForm">
+
+          <p> Password: <br><input type="text" name="thePassword" id="thePassword"></p>
+          <p> Title: <br><input type="text" name="theText" id="theTitle"></p>
+          <p> Age: <br><input type="text" name="TheAge" id="theAge"></p>
+          <p> <input type="button" name="toSave" id="toSave" value="Save"></p>
+
+        </form>
+      </section>
+      <section id="box-data" class="bg-white float-left w-50 border border-dark m-5 p-2" style="height: 600px">
+        Future info
+      </section>
+
+    </div>  -->
+<!-- ################################################################################################################################### -->
+<!-- 
+    <div>
+
+      <input type="text" id="dni" placeholder="Enter dni" />
+        <input type="text" id="name" placeholder="Enter name" />
+        <input type="text" id="surname" placeholder="Enter surname" />
+        <button type="button" onclick="add();">Save</button>
+        <hr />
+        <div id="elements">
+            <table>
+                <caption>Persons</caption>
+                <thead>
+                    <tr>
+                        <th>DNI</th>
+                        <th>Name</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody id="elementsList">
+                    <tr>
+                        <td colspan="3">Not elements to show</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="button" onclick="loadAllByName();">Order by name</button>
+        
+    </div> 
+ -->
+
+<!-- ################################################################################################################################### -->
+<div id="containForm">
+  <section id="form-zone" class="w-25 m-5 border float-left">
+    <form name="forms">
+      <p>Files: <br><input type="file" name="files" id="files"></p>
+    </form>
+  </section>
+
+  <section id="zoneData" class="w-50 m-5 border float-left">
+    
+    There's information
+
+  </section>
+
+</div>
+
+  <script type="text/javascript" src="js/apis.js"></script>
+  
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>  
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
   </body>
 
